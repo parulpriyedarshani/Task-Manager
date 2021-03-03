@@ -42,6 +42,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+Run `npm install` in both the frontend and the api folder to install all the dependencies.
+
+Run `nodemon app.js` in the api folder to start the backend server. Nodemon look for the changes automatically in the api directory and restarts itself.
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
