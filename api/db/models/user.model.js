@@ -3,6 +3,7 @@ const _ = require('lodash');
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');  //for creating a refesh token 64 byte string
 const bcrypt = require('bcryptjs');
+
 // JWT Secret string
 const jwtSecret = "1876166626712765551063076575948988655348jghhjdgeijjwwkdhjhkppppohggfhjjj";
 
@@ -24,13 +25,13 @@ const UserSchema = new mongoose.Schema({
             type: String,
             required: true
         },
-        expiresAt: {
-            type: Number,
-            required: true
+    expiresAt: {
+        type: Number,
+        required: true
         }
     }]
 
-})
+});
 
 // *** Instance methods ***
 
@@ -42,7 +43,7 @@ UserSchema.methods.toJSON = function() {
 
     //return the document except the pasword and sessions(these shouldn't be made available)
     return _.omit(userObject, ['password', 'sessions']);
-}
+};
 
 // method to generate an access token
 UserSchema.methods.generateAccessAuthToken = function() {
@@ -50,7 +51,7 @@ UserSchema.methods.generateAccessAuthToken = function() {
     return new Promise((resolve, reject) => {
         // Create the JSON web token and return that
         jwt.sign({ _id: user._id.toHexString() }, jwtSecret, { expiresIn: "15m" }, (err, token) => {
-            if(!err) {
+            if (!err) {
                 resolve(token);
             }
             else {
@@ -68,7 +69,7 @@ UserSchema.methods.generateRefreshAuthToken = function() {
     // this method simply generates a 64 byte hex string - it doesn't save it to the database. saveSessionToDatabase() does that.
     return new Promise((resolve, reject) => {
         crypto.randomBytes(64, (err, buf) => {
-            if(!err) {
+            if (!err) {
                 // no error
                 let token = buf.toString('hex');
                 return resolve(token);
@@ -93,7 +94,13 @@ UserSchema.methods.createSession = function() {
     })
 }
 
-/* MODEL METHODS(static methods) */
+/* MODEL METHODS (static methods) */
+
+UserSchema.statics.getJWTSecret = () => {
+    return jwtSecret;
+}
+
+
 UserSchema.statics.findByIdAndToken = function(_id, token) {
     //finds user by id and token
     // used in auth middleware (verifySession)
@@ -113,7 +120,9 @@ UserSchema.statics.findByCredentials = function(email, password) {
 
         return new Promise((resolve, reject) => {
             bcrypt.compare(password, user.password, (err, res) => {
-                if (res) resolve(user);
+                if (res) {
+                    resolve(user);
+                }
                 else {
                     reject();
                 }
@@ -122,9 +131,9 @@ UserSchema.statics.findByCredentials = function(email, password) {
     })
 }
 
-UserSchema.statics.hasRefreshedTokenExpired = (expiresAt) => {
+UserSchema.statics.hasRefreshTokenExpired = (expiresAt) => {
     let secondsSinceEpoch = Date.now() / 1000; // to change to seconds
-    if(expiresAt > secondsSinceEpoch) {
+    if (expiresAt > secondsSinceEpoch) {
         // hasnot expired
         return false;
     } else {
