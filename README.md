@@ -44,7 +44,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 Run `npm install` in both the frontend and the api folder to install all the dependencies.
 
-Run `nodemon app.js` in the api folder to start the backend server. Nodemon look for the changes automatically in the api directory and restarts itself.
+Run `nodemon app.js` in the api folder to start the backend server. Nodemon looks for the changes automatically in the api directory and restarts itself.
 
 ## Code scaffolding
 
