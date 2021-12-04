@@ -3,25 +3,25 @@ A fully functioning single page Task Manager App built using the MEAN(MongoDB, E
 
 # Key Features
 
--> Signup using email and password.
+-> User Signup with email and password.
 
--> Logging in.
+-> User Login
 
--> User Authentication using Json web Token.
+-> User Authentication with Json Web Token
 
--> Creating new lists.
+-> Creating new lists
 
--> Editing an existing list.
+-> Editing an existing list
 
--> Deleting lists.
+-> Deleting lists
 
--> Creating tasks in a specific list.
+-> Creating tasks in a specific list
 
--> Editing the tasks.
+-> Editing tasks
 
--> Deleting the tasks.
+-> Deleting tasks
 
--> Setting the tasks to complete.
+-> Marking tasks as completed/uncompleted
 
 ##
 
