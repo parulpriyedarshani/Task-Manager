@@ -1,5 +1,5 @@
 # Task-Manager
-A fully functioning single page Task Manager web application build using the MEAN(MongoDB, Express.js, Angular, Node.js) stack enabled with CRUD(Create, Read, Update, Delete) functionalities. A Task Manager allows you to manage project tasks and the time spent on them. With a task manager app in hand, it becomes really easy to get things done in an effective manner. For building the UI of the web app Bulma CSS framework has been used and for authentication jwt has been used here.
+A fully functioning single page Task Manager App built using the MEAN(MongoDB, Express.js, Angular, Node.js) stack enabled with all the CRUD(Create, Read, Update, Delete) functionalities. This application allows the user to manage their project's tasks and the time spent on them. With this task manager app in hand, it becomes really easy to get things done in an effective manner. For building the UI of this web application Angular and Bulma CSS framework have been used in the project along with JWT for user authentication.
 
 # Key Features
 
